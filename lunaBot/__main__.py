@@ -25,9 +25,9 @@ from lunaBot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from lunaBot.modules import ALL_MODULES
-from lunaBot.modules.helper_funcs.chat_status import is_user_admin
-from lunaBot.modules.helper_funcs.misc import paginate_modules
+from echoBot.modules import ALL_MODULES
+from echoBot.modules.helper_funcs.chat_status import is_user_admin
+from echoBot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -72,11 +72,11 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-LUNA_IMG = "https://telegra.ph/file/ecb9b93a96b0b1a0c4c1b.jpg"
+LUNA_IMG = "https://telegra.ph/file/252906386a297b3cc6e94.jpg"
 
 PM_START_TEXT = """
 ╭──────────────
-**Hey**🤞 **{message.from_user.first_name }** \n\n __ I am AKSHI🥀🍃[☘️](https://telegra.ph/file/ecb9b93a96b0b1a0c4c1b.jpg)
+**Hey**🤞 **{message.from_user.first_name }** \n\n __ I am ECHO🥀🍃[☘️](https://telegra.ph/file/252906386a297b3cc6e94.jpg)
 **I am an Advanced Group Manager Bot, With Lots of Cool Features❤️.**
 `For More Information Use the Button Below or Send` /help 
 ╰──────────────
@@ -85,17 +85,17 @@ PM_START_TEXT = """
 buttons = [
         [
         InlineKeyboardButton(
-            text="𝘈𝘥𝘥 𝘮𝘦 𝘯𝘰𝘸➕", url="t.me/Miss_AkshiV1_Bot?startgroup=true"),
+            text="𝘈𝘥𝘥 𝘮𝘦 𝘯𝘰𝘸➕", url="t.me/Echo_Group_management_Bot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="𝘔𝘪𝘴𝘴 𝘈𝘬𝘴𝘩𝘪 𝘭𝘰𝘨𝘴❤️", url=f"https://t.me/Miss_AkshiV1_logs"),
+        InlineKeyboardButton(text="ECHO Bot 𝘭𝘰𝘨𝘴❤️", url=f"https://t.me/Echo_Support_Logs"),
     ],
     [
         InlineKeyboardButton(
-            text="𝘜𝘱𝘥𝘢𝘵𝘦𝘴🤞", url=f"https://t.me/Miss_AkshiV1_Updates"
+            text="𝘜𝘱𝘥𝘢𝘵𝘦𝘴🤞", url=f"https://t.me/Echo_Support_Logs"
         ),
         InlineKeyboardButton(
-            text="𝘚𝘶𝘱𝘱𝘰𝘳𝘵😍", url=f"https://t.me/Miss_AkshiV1_Support"
+            text="𝘚𝘶𝘱𝘱𝘰𝘳𝘵😍", url=f"https://t.me/Echo_Support_Group"
         ),
     ],
     [
@@ -111,14 +111,14 @@ HELP_STRINGS = """
 
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](#) or by contacting @akshi_s_ashu1 \
+ You can support the project via [Paypal](#) or by contacting @Innocent_Boy_Krish_40 \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at."""
 
 
 
 DONATE_STRING = """Hehe, senang mendengar Anda ingin menyumbang!
- [klick disini](https://t.me/zeinzo_1) ❤️
+ [klick disini](https://t.me/Echo_Support_Logs) ❤️
 """
 
 IMPORTED = {}
@@ -132,7 +132,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("lunaBot.modules." + module_name)
+    imported_module = importlib.import_module("echoBot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -366,7 +366,7 @@ def luna_about_callback(update, context):
     query = update.callback_query
     if query.data == "luna_":
         query.message.edit_text(
-            text="""Hi again! I'am a full-fledged group management bot built to help you manage your group easily.\n
+            text="""Hi again! I'am a Echo-Bot group management bot built to help you manage your group easily.\n
                     \nI can do lot of stuff, some of them are:
                     \n• Restrict users who flood your chat using my anti-flood module.
                     \n• Safeguard your group with the advanced and handy Antispam system.
@@ -405,7 +405,7 @@ def luna_about_callback(update, context):
             f"\n\n1.) first, add me to your group.\n"
             f"2.) then promote me as admin and give all permissions except anonymous admin.\n"
             f"3.) after promoting me, type /reload in group to update the admin list.\n"
-            f"4.) add @LunaAssistant to your group or type /join to invite her.\n"
+            f"4.) add @Echo_Music_Assitant to your group or type /join to invite her.\n"
             f"5.) turn on the video chat first before start to play music.\n"
             f"\n📌 if userbot doesn't join voice chat make sure voice chat is active, or type /leave then type /join again..",
             parse_mode=ParseMode.MARKDOWN,
@@ -413,14 +413,14 @@ def luna_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="📗 Basic CMD", callback_data="luna_admin"),
-                    InlineKeyboardButton(text="📘 Advanced CMD", callback_data="luna_notes"),
+                    InlineKeyboardButton(text="📗 Basic CMD", callback_data="echo_admin"),
+                    InlineKeyboardButton(text="📘 Advanced CMD", callback_data="echo_notes"),
                  ],
                  [
-                    InlineKeyboardButton(text="📙 Admin CMD", callback_data="luna_support"),
+                    InlineKeyboardButton(text="📙 Admin CMD", callback_data="echo_support"),
                  ],
                  [
-                    InlineKeyboardButton(text="Back", callback_data="luna_back"),
+                    InlineKeyboardButton(text="Back", callback_data="echo_back"),
                  
                  ]
                 ]
@@ -439,11 +439,11 @@ def luna_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="luna_basichelp")]]
+                [[InlineKeyboardButton(text="Back", callback_data="echo_basichelp")]]
             ),
         )
 
-    elif query.data == "luna_notes":
+    elif query.data == "echo_notes":
         query.message.edit_text(
             text=f"──「 Advanced CMD 」──\n\n"
             f"/start (in group) - see the bot alive status"
@@ -453,7 +453,7 @@ def luna_about_callback(update, context):
             f"\n/id - show the group/user id & other",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="luna_basichelp")]]
+                [[InlineKeyboardButton(text="Back", callback_data="echo_basichelp")]]
             ),
         )
     elif query.data == "luna_support":
@@ -595,7 +595,7 @@ def luna_about_callback(update, context):
                 [
                   [
                      InlineKeyboardButton(text="Back", callback_data="luna_puqi"),
-                     InlineKeyboardButton(text="☎️ Support", url=f"https://t.me/lunaXresso"),
+                     InlineKeyboardButton(text="☎️ Support", url=f"https://t.me/Echo_Support_Logs"),
                   ]
                 ]
             ),
